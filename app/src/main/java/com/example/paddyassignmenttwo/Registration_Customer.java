@@ -87,6 +87,7 @@ public class Registration_Customer extends AppCompatActivity {
                     mentee.put("name", name);
                     mentee.put("email", email);
                     mentee.put("type", "customer");
+                    mentee.put("profileimage", "");
 
 
                     RootRef.updateChildren(mentee).addOnCompleteListener(new OnCompleteListener() {

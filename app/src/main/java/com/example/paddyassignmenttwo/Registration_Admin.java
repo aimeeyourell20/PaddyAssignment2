@@ -86,6 +86,8 @@ public class Registration_Admin extends AppCompatActivity {
                     mentee.put("name", name);
                     mentee.put("email", email);
                     mentee.put("type", "admin");
+                    mentee.put("profileimage", "");
+
 
 
                     RootRef.updateChildren(mentee).addOnCompleteListener(new OnCompleteListener() {
