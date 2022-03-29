@@ -96,6 +96,13 @@ public class AdminMainActivity extends AppCompatActivity {
             }
         });
 
+        mSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Search();
+            }
+        });
+
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -174,22 +181,28 @@ public class AdminMainActivity extends AppCompatActivity {
     private void Items() {
         Intent i = new Intent(AdminMainActivity.this, Category .class);
         startActivity(i);
-        finish();
+
 
     }
 
+    private void Search() {
+        Intent i = new Intent(AdminMainActivity.this, Search_Admin .class);
+        startActivity(i);
+
+
+    }
 
 
     private void Profile() {
         Intent i = new Intent(AdminMainActivity.this, Admin_Profile.class);
         startActivity(i);
-        finish();
+
     }
 
     private void Settings() {
         Intent i = new Intent(AdminMainActivity.this, Admin_Settings.class);
         startActivity(i);
-        finish();
+
     }
 
     private void Signout() {

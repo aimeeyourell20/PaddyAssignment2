@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="21dp"
+    android:layout_margin="11dp"
+    android:gravity="center_vertical"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="12dp"
+    android:background="#fff"
+    android:elevation="12dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Item Name: "
+            android:textAlignment="center"
+            android:textSize="24sp"/>
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_below="@+id/itemName"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/itemCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Item Category: "
+            android:textAlignment="center"
+            android:layout_below="@+id/itemImage"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/itemManufacturer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Item Manufacturer: "
+            android:textAlignment="center"
+            android:layout_below="@+id/itemCategory"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Item Price: "
+            android:textAlignment="center"
+            android:layout_below="@+id/itemManufacturer"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/itemDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Item Description: "
+            android:textAlignment="center"
+            android:layout_below="@+id/itemPrice"
+            android:textSize="24sp"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
