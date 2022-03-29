@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "358559446984",
+    "project_id": "paddyassignmenttwo",
+    "storage_bucket": "paddyassignmenttwo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358559446984:android:9c305efff4aca37e7af2fd",
+        "android_client_info": {
+          "package_name": "com.example.paddyassignmenttwo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358559446984-afr3on3pt3g91ev0iqi7b6t0vv1r07u2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpiKOkVFBJc1BH035xcl8zQMD7xrCKzp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358559446984-afr3on3pt3g91ev0iqi7b6t0vv1r07u2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

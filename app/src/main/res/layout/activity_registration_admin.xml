@@ -1,0 +1,148 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="21dp"
+    android:gravity="center_vertical"
+    android:background="#FB8C00"
+    tools:context=".Registration_Admin">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="12dp"
+        android:background="#fff"
+        android:elevation="12dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/cardview">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="685dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageview"
+                    android:layout_width="152dp"
+                    android:layout_height="68dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="Admin Registration"
+                    android:textColor="#000"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Please sign up"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="21dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#000">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/registerName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="11dp"
+                            android:hint="Enter your full name"
+                            android:textColor="#000"
+                            android:textColorHint="#000"
+                            android:textSize="17sp">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#000">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/registerEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="11dp"
+                            android:hint="Enter your email"
+                            android:textColor="#000"
+                            android:textColorHint="#000"
+                            android:textSize="17sp">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#000">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/registerPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="11dp"
+                            android:hint="Enter your password"
+                            android:textColor="#000"
+                            android:inputType="textPassword"
+                            android:textColorHint="#000"
+                            android:textSize="17sp">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/adminSignUpButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="21dp"
+                        android:backgroundTint="#039BE5"
+                        android:text="Sign Up"
+                        android:textSize="20sp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
