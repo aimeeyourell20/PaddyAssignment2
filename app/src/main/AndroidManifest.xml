@@ -14,6 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PaddyAssignmentTwo">
         <activity
+            android:name=".Search_Admin"
+            android:exported="true" />
+        <activity
+            android:name=".Items"
+            android:exported="true" />
+        <activity
+            android:name=".Admin_Settings"
+            android:exported="true" />
+        <activity
+            android:name=".Admin_Profile"
+            android:exported="true" />
+        <activity
             android:name=".Customer_Profile"
             android:exported="true" />
         <activity
@@ -55,11 +67,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-
     </application>
 
 </manifest>
