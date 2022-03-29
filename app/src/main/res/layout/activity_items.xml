@@ -1,9 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Items">
+    tools:context=".Items"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="vertical"
+        android:background="@drawable/gradient">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:layout_marginBottom="28dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:text="Add Item"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/gradient"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Add Item Title"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/itemTitle"
+                android:layout_width="match_parent"
+                android:paddingLeft="12dp"
+                android:textColor="#0352DA"
+                android:layout_height="55dp"
+                android:hint="Leather shoes"
+                android:inputType="text"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Add Item Description"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/itemDescription"
+                android:layout_width="match_parent"
+                android:paddingLeft="12dp"
+                android:textColor="#0352DA"
+                android:layout_height="55dp"
+                android:hint="Made out of real leather"
+                android:inputType="text"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Add Item Category"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/itemCategory"
+                android:layout_width="match_parent"
+                android:paddingLeft="12dp"
+                android:textColor="#0352DA"
+                android:layout_height="55dp"
+                android:hint="Shoes"/>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Add Item Price"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/itemPrice"
+            android:layout_width="match_parent"
+            android:paddingLeft="12dp"
+            android:textColor="#0352DA"
+            android:layout_height="55dp"
+            android:hint="€200"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Add Item Manufacturer"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/itemManufacturer"
+            android:layout_width="match_parent"
+            android:paddingLeft="12dp"
+            android:textColor="#0352DA"
+            android:layout_height="55dp"
+            android:hint="Gucci"/>
+
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="20dp"
+        android:text="Add Item"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+    </LinearLayout>
+
+
