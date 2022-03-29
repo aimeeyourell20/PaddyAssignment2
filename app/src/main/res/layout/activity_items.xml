@@ -31,6 +31,32 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/item"
+                android:layout_gravity="center"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,17 +68,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="Add Item Title"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="Add Item Title"/>
 
-            <EditText
-                android:id="@+id/itemTitle"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:paddingLeft="12dp"
-                android:textColor="#0352DA"
-                android:layout_height="55dp"
-                android:hint="Leather shoes"
-                android:inputType="text"/>
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/itemTitle"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="12dp"
+                    android:textColor="#0352DA"
+                    android:layout_height="55dp"
+                    android:hint="Leather shoes"
+                    android:inputType="text"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         </LinearLayout>
 
@@ -61,24 +97,33 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="Add Item Description"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="Add Item Description"/>
 
-            <EditText
-                android:id="@+id/itemDescription"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:paddingLeft="12dp"
-                android:textColor="#0352DA"
-                android:layout_height="55dp"
-                android:hint="Made out of real leather"
-                android:inputType="text"/>
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/itemDescription"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="12dp"
+                    android:textColor="#0352DA"
+                    android:layout_height="55dp"
+                    android:hint="Made out of real leather"
+                    android:inputType="text"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         </LinearLayout>
 
@@ -87,32 +132,38 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="Add Item Category"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="Add Item Manufacturer"/>
 
-            <EditText
-                android:id="@+id/itemCategory"
-                android:layout_width="match_parent"
-                android:paddingLeft="12dp"
-                android:textColor="#0352DA"
-                android:layout_height="55dp"
-                android:hint="Shoes"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/itemManufacturertxt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        </LinearLayout>
+                    <EditText
+                        android:id="@+id/itemManufacturer"
+                        android:layout_width="match_parent"
+                        android:paddingLeft="12dp"
+                        android:textColor="#0352DA"
+                        android:layout_height="55dp"
+                        android:hint="Gucci"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <TextView
@@ -122,39 +173,23 @@
             android:text="Add Item Price"
             android:layout_marginBottom="10dp"/>
 
-        <EditText
-            android:id="@+id/itemPrice"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:paddingLeft="12dp"
-            android:textColor="#0352DA"
-            android:layout_height="55dp"
-            android:hint="€200"/>
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/itemPrice"
+                android:layout_width="match_parent"
+                android:paddingLeft="12dp"
+                android:textColor="#0352DA"
+                android:layout_height="55dp"
+                android:hint="€200"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Add Item Manufacturer"
-            android:layout_marginBottom="10dp"/>
-
-        <EditText
-            android:id="@+id/itemManufacturer"
-            android:layout_width="match_parent"
-            android:paddingLeft="12dp"
-            android:textColor="#0352DA"
-            android:layout_height="55dp"
-            android:hint="Gucci"/>
-
-        </LinearLayout>
 
     <Button
         android:id="@+id/addItemButton"

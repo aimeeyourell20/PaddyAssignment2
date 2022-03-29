@@ -172,7 +172,7 @@ public class AdminMainActivity extends AppCompatActivity {
 
 
     private void Items() {
-        Intent i = new Intent(AdminMainActivity.this, Items.class);
+        Intent i = new Intent(AdminMainActivity.this, Category .class);
         startActivity(i);
         finish();
 
