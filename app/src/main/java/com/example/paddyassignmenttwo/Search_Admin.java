@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,15 @@ public class Search_Admin extends AppCompatActivity {
                 itemViewHolder.mItemDescription.setText(items_model.getDescription());
                 itemViewHolder.mItemPrice.setText(items_model.getPrice());
                 itemViewHolder.mManufacturer.setText(items_model.getManufacturer());
+
+                itemViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(Search_Admin.this, ItemDetails.class);
+                        i.putExtra("itemID", items_model.getItemID());
+                        startActivity(i);
+                    }
+                });
 
 
             }

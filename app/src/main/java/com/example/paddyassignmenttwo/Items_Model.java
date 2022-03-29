@@ -2,17 +2,18 @@ package com.example.paddyassignmenttwo;
 
 public class Items_Model {
 
-    private String title, description, price, manufacturer, category;
+    private String title, description, price, manufacturer, category, itemID;
 
     public Items_Model() {
     }
 
-    public Items_Model(String title, String description, String price, String manufacturer, String category) {
+    public Items_Model(String title, String description, String price, String manufacturer, String category, String itemID) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.manufacturer = manufacturer;
         this.category = category;
+        this.itemID = itemID;
     }
 
     public String getTitle() {
@@ -53,5 +54,13 @@ public class Items_Model {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getItemID() {
+        return itemID;
+    }
+
+    public void setItemID(String itemID) {
+        this.itemID = itemID;
     }
 }

@@ -81,13 +81,16 @@ public class Items extends AppCompatActivity {
                 String descriptions = mDescription.getText().toString();
                 String price = mPrice.getText().toString();
 
+
                 DatabaseReference Items = ItemRef.child("Items").push();
+                String itemID = Items.getKey();
                 Map items = new HashMap();
                 items.put("title", titles);
                 items.put("description", descriptions);
                 items.put("manufacturer", manufacturer);
                 items.put("price", price);
                 items.put("category", Category);
+                items.put("itemID", itemID);
 
 
 

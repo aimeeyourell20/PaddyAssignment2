@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/shopping"
     tools:context=".Search_Admin">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@drawable/shopping"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

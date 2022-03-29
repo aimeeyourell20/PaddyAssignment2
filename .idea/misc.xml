@@ -7,6 +7,8 @@
         <entry key="app/src/main/res/drawable/boarders.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/drawable/gradient.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/drawable/ic_money.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/drawable/ic_shopping.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/drawable/profilebackgroundwhite.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/activity_admin_main.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_admin_profile.xml" value="0.24010416666666667" />
@@ -15,6 +17,7 @@
         <entry key="app/src/main/res/layout/activity_customer_main.xml" value="0.22604166666666667" />
         <entry key="app/src/main/res/layout/activity_customer_profile.xml" value="0.22604166666666667" />
         <entry key="app/src/main/res/layout/activity_customer_settings.xml" value="0.22604166666666667" />
+        <entry key="app/src/main/res/layout/activity_item_details.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_items.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
