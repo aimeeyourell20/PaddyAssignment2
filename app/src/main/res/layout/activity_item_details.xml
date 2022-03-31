@@ -74,15 +74,13 @@
         android:layout_below="@+id/itemDescription"
         app:textSize="15sp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addToCartButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
-        android:src="@drawable/ic_shopping"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
-        android:layout_alignParentRight="true"
-        android:backgroundTint="#FB8C00"/>
+   <Button
+       android:id="@+id/addToCart"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_marginBottom="100dp"
+       android:text="Add to cart"
+       android:textSize="20sp"/>
 
 </RelativeLayout>

@@ -180,27 +180,27 @@ public class CustomerMainActivity extends AppCompatActivity {
     private void Cart() {
         Intent i = new Intent(CustomerMainActivity.this, Cart.class);
         startActivity(i);
-        finish();
+
 
     }
 
     private void Search() {
         Intent i = new Intent(CustomerMainActivity.this, Search.class);
         startActivity(i);
-        finish();
+
     }
 
 
     private void Profile() {
         Intent i = new Intent(CustomerMainActivity.this, Customer_Profile.class);
         startActivity(i);
-        finish();
+
     }
 
     private void Settings() {
         Intent i = new Intent(CustomerMainActivity.this, Customer_Settings.class);
         startActivity(i);
-        finish();
+
     }
 
     private void Signout() {

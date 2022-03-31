@@ -3,26 +3,37 @@ package com.example.paddyassignmenttwo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class ItemDetails extends AppCompatActivity {
 
     private TextView mTitle, mManufacturer, mPrice, mCategory, mDescription;
-    private FloatingActionButton mAddItemToCart;
+    private Button mAddItemToCart;
     private ElegantNumberButton mQuantity;
     private ImageView mItemImage;
     private String ItemID = "";
     private DatabaseReference ItemRef;
+    private FirebaseAuth mAuth;
+    private String Customer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +41,10 @@ public class ItemDetails extends AppCompatActivity {
         setContentView(R.layout.activity_item_details);
 
         ItemRef = FirebaseDatabase.getInstance().getReference().child("Items");
+        mAuth = FirebaseAuth.getInstance();
+        Customer = mAuth.getCurrentUser().getUid();
+
+
 
         mTitle = findViewById(R.id.itemName);
         mManufacturer = findViewById(R.id.itemManufacturer);
@@ -37,12 +52,54 @@ public class ItemDetails extends AppCompatActivity {
         mPrice = findViewById(R.id.itemPrice);
         mCategory = findViewById(R.id.itemCategory);
         mItemImage = findViewById(R.id.itemImage);
-        mAddItemToCart = findViewById(R.id.addToCartButton);
+        mAddItemToCart = findViewById(R.id.addToCart);
         mQuantity = findViewById(R.id.quantityCounter);
 
         ItemID = getIntent().getStringExtra("itemID");
 
         itemInformation(ItemID);
+
+        mAddItemToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addToCart();
+            }
+        });
+    }
+
+    private void addToCart() {
+
+        DatabaseReference Cart = FirebaseDatabase.getInstance().getReference().child("Cart");
+
+        HashMap<String, Object> cartMap = new HashMap<>();
+        cartMap.put("itemID", ItemID);
+        cartMap.put("title", mTitle.getText().toString());
+        cartMap.put("price", mPrice.getText().toString());
+        cartMap.put("category", mCategory.getText().toString());
+        cartMap.put("quantity", mQuantity.getNumber());
+        cartMap.put("discount", "");
+
+        Cart.child("Customer View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Cart.child("Admin View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if(task.isSuccessful()){
+                                Toast.makeText(ItemDetails.this, "Item added to cart", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(ItemDetails.this, CustomerMainActivity.class);
+                                startActivity(i);
+                            }
+
+                        }
+                    });
+                }
+            }
+        });
+
+
     }
 
     private void itemInformation(String itemID) {

@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/layout/activity_admin_main.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_admin_profile.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_admin_settings.xml" value="0.24010416666666667" />
+        <entry key="app/src/main/res/layout/activity_cart.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_category.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_customer_main.xml" value="0.22604166666666667" />
         <entry key="app/src/main/res/layout/activity_customer_profile.xml" value="0.22604166666666667" />
@@ -27,6 +28,7 @@
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_search_admin.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.24010416666666667" />
+        <entry key="app/src/main/res/layout/cart_layout.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/item_layout.xml" value="0.24010416666666667" />
       </map>
     </option>
