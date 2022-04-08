@@ -32,6 +32,7 @@ public class Cart extends AppCompatActivity {
     private TextView mTotalPrice;
     private FirebaseAuth mAuth;
     private String Customer;
+    private int Total = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,18 @@ public class Cart extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
+
+        mContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Cart.this, Customer_Order_Activity.class);
+                i.putExtra("Total", String.valueOf(Total));
+                startActivity(i);
+                finish();
+            }
+        });
+
     }
 
     @Override
@@ -67,6 +80,10 @@ public class Cart extends AppCompatActivity {
                 cartViewHolder.mItemName.setText(cart_model.getTitle());
                 cartViewHolder.mItemPrice.setText("Price: €" + cart_model.getPrice());
                 cartViewHolder.mItemQuantity.setText("Quantity: " + cart_model.getQuantity());
+
+                int TotalPrice = ((Integer.valueOf(cart_model.getPrice()))) * Integer.valueOf(cart_model.getQuantity());
+                Total = Total + TotalPrice;
+                mTotalPrice.setText("Total Price: " + String.valueOf(Total));
 
                 cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

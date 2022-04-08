@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ItemDetails extends AppCompatActivity {
@@ -34,6 +35,7 @@ public class ItemDetails extends AppCompatActivity {
     private DatabaseReference ItemRef;
     private FirebaseAuth mAuth;
     private String Customer;
+    private final ArrayList<Items_Model> items_models  = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,7 @@ public class ItemDetails extends AppCompatActivity {
         cartMap.put("quantity", mQuantity.getNumber());
         cartMap.put("discount", "");
 
-        //if(mQuantity.getNumber() > Items.child(quantity))
+        //if(mQuantity.getNumber() > Items.items_models.ge)
 
         Cart.child("Customer View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
