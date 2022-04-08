@@ -111,6 +111,13 @@ public class CustomerMainActivity extends AppCompatActivity {
             }
         });
 
+        mOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Orders();
+            }
+        });
+
     }
 
     @Override
@@ -199,7 +206,7 @@ public class CustomerMainActivity extends AppCompatActivity {
     }
 
     private void Orders() {
-        Intent i = new Intent(CustomerMainActivity.this, Customer_Profile.class);
+        Intent i = new Intent(CustomerMainActivity.this, Customer_Orders_Customer.class);
         startActivity(i);
 
     }

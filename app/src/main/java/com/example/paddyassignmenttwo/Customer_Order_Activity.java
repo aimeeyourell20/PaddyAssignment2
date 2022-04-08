@@ -71,6 +71,8 @@ public class Customer_Order_Activity extends AppCompatActivity {
             }
         });
 
+
+
         mConfirmOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +122,5 @@ public class Customer_Order_Activity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

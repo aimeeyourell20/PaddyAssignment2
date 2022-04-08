@@ -64,7 +64,7 @@ public class ItemDetails extends AppCompatActivity {
         mAddItemToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addToCart();
+                    addToCart();
             }
         });
     }
@@ -95,8 +95,35 @@ public class ItemDetails extends AppCompatActivity {
 
                             if(task.isSuccessful()){
                                 Toast.makeText(ItemDetails.this, "Item added to cart", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(ItemDetails.this, CustomerMainActivity.class);
-                                startActivity(i);
+
+                                Items.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                                for(DataSnapshot a :snapshot.getChildren()){
+                                                    int quantity = a.child("quantity").getValue(Integer.class);
+
+                                                    int total = quantity;
+                                                    int item = Integer.parseInt(mQuantity.getNumber());
+                                                    int quantityTotal = total - item;
+
+                                                    HashMap<String, Object> map = new HashMap<>();
+                                                    map.put("quantity", quantityTotal);
+                                                    Items.child(ItemID).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            Intent i = new Intent(ItemDetails.this, CustomerMainActivity.class);
+                                                            startActivity(i);
+                                                        }
+                                                    });
+                                                }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
                             }
 
                         }
@@ -104,6 +131,7 @@ public class ItemDetails extends AppCompatActivity {
                 }
             }
         });
+
 
 
     }
