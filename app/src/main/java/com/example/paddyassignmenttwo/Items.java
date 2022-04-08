@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class Items extends AppCompatActivity {
 
-    private EditText mTitle, mManufacturer, mPrice, mCategory, mDescription;
+    private EditText mTitle, mManufacturer, mPrice, mCategory, mDescription, mQuantity;
     private ImageView mImage;
     private Button mAddItem;
     private DatabaseReference ItemRef;
@@ -61,6 +61,7 @@ public class Items extends AppCompatActivity {
         mPrice = findViewById(R.id.itemPrice);
         mImage = findViewById(R.id.itemImage);
         mAddItem = findViewById(R.id.addItemButton);
+        mQuantity = findViewById(R.id.itemQuantity);
 
         mImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +81,7 @@ public class Items extends AppCompatActivity {
                 String manufacturer = mManufacturer.getText().toString();
                 String descriptions = mDescription.getText().toString();
                 String price = mPrice.getText().toString();
+                String quantity = mQuantity.getText().toString();
 
 
                 DatabaseReference Items = ItemRef.child("Items").push();
@@ -91,6 +93,7 @@ public class Items extends AppCompatActivity {
                 items.put("price", price);
                 items.put("category", Category);
                 items.put("itemID", itemID);
+                items.put("quantity", quantity);
 
 
 

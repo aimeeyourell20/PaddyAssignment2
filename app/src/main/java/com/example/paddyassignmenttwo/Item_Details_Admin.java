@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,11 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-public class ItemDetails extends AppCompatActivity {
-
-    private TextView mTitle, mManufacturer, mPrice, mCategory, mDescription;
-    private Button mAddItemToCart;
-    private ElegantNumberButton mQuantity;
+public class Item_Details_Admin extends AppCompatActivity {
+    private TextView mTitle, mManufacturer, mPrice, mCategory, mDescription, mQuantity;
     private ImageView mItemImage;
     private String ItemID = "";
     private DatabaseReference ItemRef;
@@ -38,7 +34,7 @@ public class ItemDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_details);
+        setContentView(R.layout.activity_item_details_admin);
 
         ItemRef = FirebaseDatabase.getInstance().getReference().child("Items");
         mAuth = FirebaseAuth.getInstance();
@@ -52,58 +48,13 @@ public class ItemDetails extends AppCompatActivity {
         mPrice = findViewById(R.id.itemPrice);
         mCategory = findViewById(R.id.itemCategory);
         mItemImage = findViewById(R.id.itemImage);
-        mAddItemToCart = findViewById(R.id.addToCart);
-        mQuantity = findViewById(R.id.quantityCounter);
+        mQuantity = findViewById(R.id.itemQuantity);
 
         ItemID = getIntent().getStringExtra("itemID");
 
         itemInformation(ItemID);
-
-        mAddItemToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addToCart();
-            }
-        });
     }
 
-    private void addToCart() {
-
-        DatabaseReference Cart = FirebaseDatabase.getInstance().getReference().child("Cart");
-        DatabaseReference Items = FirebaseDatabase.getInstance().getReference().child("Items");
-
-        HashMap<String, Object> cartMap = new HashMap<>();
-        cartMap.put("itemID", ItemID);
-        cartMap.put("title", mTitle.getText().toString());
-        cartMap.put("price", mPrice.getText().toString());
-        cartMap.put("category", mCategory.getText().toString());
-        cartMap.put("quantity", mQuantity.getNumber());
-        cartMap.put("discount", "");
-
-        //if(mQuantity.getNumber() > Items.child(quantity))
-
-        Cart.child("Customer View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Cart.child("Admin View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-
-                            if(task.isSuccessful()){
-                                Toast.makeText(ItemDetails.this, "Item added to cart", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(ItemDetails.this, CustomerMainActivity.class);
-                                startActivity(i);
-                            }
-
-                        }
-                    });
-                }
-            }
-        });
-
-
-    }
 
     private void itemInformation(String itemID) {
 
@@ -118,6 +69,7 @@ public class ItemDetails extends AppCompatActivity {
                     mDescription.setText(items_model.getDescription());
                     mPrice.setText(items_model.getPrice());
                     mCategory.setText(items_model.getCategory());
+                    mQuantity.setText(Integer.toString(items_model.getQuantity()));
                 }
             }
 
