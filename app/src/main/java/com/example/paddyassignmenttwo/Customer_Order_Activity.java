@@ -42,7 +42,6 @@ public class Customer_Order_Activity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser().getUid();
         RootRef = FirebaseDatabase.getInstance().getReference().child("users").child(currentUser);
-        Orders = FirebaseDatabase.getInstance().getReference().child("Orders").child(currentUser).push();
 
         mOrderAddress = findViewById(R.id.customersShippingDetails);
         mOrderName = findViewById(R.id.customersName);
@@ -87,6 +86,8 @@ public class Customer_Order_Activity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat date = new SimpleDateFormat("MM dd, yyyy");
         saveDate = date.format(calendar.getTime());
+        Orders = FirebaseDatabase.getInstance().getReference().child("Orders").child(currentUser).push();
+        String id = Orders.getKey();
 
         HashMap<String, Object> ordersMap = new HashMap<>();
         ordersMap.put("totalAmount", Total);
@@ -95,6 +96,8 @@ public class Customer_Order_Activity extends AppCompatActivity {
         ordersMap.put("email", mOrderEmail.getText().toString());
         ordersMap.put("date", saveDate);
         ordersMap.put("state", "Not Shipped");
+        ordersMap.put("orderId", id);
+        ordersMap.put("customerId", currentUser);
 
         Orders.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

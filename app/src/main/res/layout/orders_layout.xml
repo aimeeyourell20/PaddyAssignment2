@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="15dp"
+    app:cardElevation="20dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_below="@+id/name"
+            android:layout_marginRight="6dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:layout_below="@+id/email"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:layout_below="@+id/address"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textSize="20sp"/>
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:layout_below="@+id/price"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/orderDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date"
+            android:text="Order Details"
+            android:layout_margin="12dp"
+            android:textSize="15sp"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

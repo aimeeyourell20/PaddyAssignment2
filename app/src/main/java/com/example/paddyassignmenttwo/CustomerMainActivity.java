@@ -24,7 +24,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class CustomerMainActivity extends AppCompatActivity {
 
-    private ImageView mSettings, mProfile, mLogout, mCart, mSearch;
+    private ImageView mSettings, mProfile, mLogout, mCart, mSearch, mOrders;
     private TextView mProfileName, mType;
     private DatabaseReference RootRef, CustomerRef;
     private FirebaseAuth firebaseAuth;
@@ -46,6 +46,7 @@ public class CustomerMainActivity extends AppCompatActivity {
         mCart = findViewById(R.id.cart);
         mLogout = findViewById(R.id.logout);
         mSearch = findViewById(R.id.search);
+        mOrders = findViewById(R.id.orders);
 
 
 
@@ -192,6 +193,12 @@ public class CustomerMainActivity extends AppCompatActivity {
 
 
     private void Profile() {
+        Intent i = new Intent(CustomerMainActivity.this, Customer_Profile.class);
+        startActivity(i);
+
+    }
+
+    private void Orders() {
         Intent i = new Intent(CustomerMainActivity.this, Customer_Profile.class);
         startActivity(i);
 

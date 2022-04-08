@@ -2,17 +2,18 @@ package com.example.paddyassignmenttwo;
 
 public class Cart_Model {
 
-    private String itemID, title, price, quantity, discount;
+    private String itemID, title, price, quantity, discount, customerId;
 
     public Cart_Model() {
     }
 
-    public Cart_Model(String itemID, String title, String price, String quantity, String discount) {
+    public Cart_Model(String itemID, String title, String price, String quantity, String discount, String customerId) {
         this.itemID = itemID;
         this.title = title;
         this.price = price;
         this.quantity = quantity;
         this.discount = discount;
+        this.customerId = customerId;
     }
 
     public String getItemID() {
@@ -53,5 +54,13 @@ public class Cart_Model {
 
     public void setDiscount(String discount) {
         this.discount = discount;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 }

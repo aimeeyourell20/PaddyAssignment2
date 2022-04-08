@@ -81,6 +81,7 @@ public class ItemDetails extends AppCompatActivity {
         cartMap.put("category", mCategory.getText().toString());
         cartMap.put("quantity", mQuantity.getNumber());
         cartMap.put("discount", "");
+        cartMap.put("customerId", Customer);
 
         //if(mQuantity.getNumber() > Items.items_models.ge)
 

@@ -16,6 +16,12 @@
         android:theme="@style/Theme.PaddyAssignmentTwo"
         tools:replace="android:theme">
         <activity
+            android:name=".Customer_Orders_Customer"
+            android:exported="true" />
+        <activity
+            android:name=".Order_Details"
+            android:exported="true" />
+        <activity
             android:name=".Customer_Orders_Admin"
             android:exported="true" />
         <activity

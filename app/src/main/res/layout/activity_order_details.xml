@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Cart">
+    tools:context=".Order_Details">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -14,11 +14,10 @@
         android:layout_alignParentTop="true">
 
         <TextView
-            android:id="@+id/totalPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Total Cart Price: "
+            android:text="Order Details"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -30,18 +29,6 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_above="@+id/continueButton"/>
-
-    <Button
-        android:id="@+id/continueButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="Continue"
-        android:layout_margin="12dp"
-        android:textSize="15sp"/>
-
-
+        android:layout_below="@+id/relativeLayout"/>
 
 </RelativeLayout>
