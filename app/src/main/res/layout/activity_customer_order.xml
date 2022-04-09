@@ -43,11 +43,28 @@
         android:id="@+id/customersName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textAlignment="center"
-        android:text="Customers Name"
         android:layout_below="@+id/customersEmail"
-        android:textSize="20sp"/>
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Customers Name"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/discount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customersName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Discount Code"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
 
     <Button
         android:id="@+id/confirmOrder"
@@ -55,7 +72,7 @@
         android:layout_height="55dp"
         android:layout_marginLeft="120dp"
         android:text="Confirm"
-        android:layout_below="@+id/customersName"
+        android:layout_below="@+id/discount"
         android:textAllCaps="false"
         android:layout_gravity="center"
         android:textColor="@color/white"

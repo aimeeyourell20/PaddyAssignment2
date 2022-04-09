@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import java.util.HashMap;
 public class Customer_Order_Activity extends AppCompatActivity {
 
     private TextView mOrderAddress, mOrderName, mOrderEmail;
+    private EditText mDiscount;
     private Button mConfirmOrder;
     private DatabaseReference RootRef, Orders;
     private FirebaseAuth firebaseAuth;
@@ -47,6 +49,7 @@ public class Customer_Order_Activity extends AppCompatActivity {
         mOrderName = findViewById(R.id.customersName);
         mOrderEmail = findViewById(R.id.customersEmail);
         mConfirmOrder = findViewById(R.id.confirmOrder);
+        mDiscount = findViewById(R.id.discount);
 
         Total = getIntent().getStringExtra("Total");
 
@@ -84,43 +87,53 @@ public class Customer_Order_Activity extends AppCompatActivity {
     }
 
     private void ConfirmOrder() {
-
+        HashMap<String, Object> ordersMap = new HashMap<>();
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat date = new SimpleDateFormat("MM dd, yyyy");
         saveDate = date.format(calendar.getTime());
         Orders = FirebaseDatabase.getInstance().getReference().child("Orders").child(currentUser).push();
         String id = Orders.getKey();
 
-        HashMap<String, Object> ordersMap = new HashMap<>();
-        ordersMap.put("totalAmount", Total);
-        ordersMap.put("name", mOrderName.getText().toString());
-        ordersMap.put("address", mOrderAddress.getText().toString());
-        ordersMap.put("email", mOrderEmail.getText().toString());
-        ordersMap.put("date", saveDate);
-        ordersMap.put("state", "Not Shipped");
-        ordersMap.put("orderId", id);
-        ordersMap.put("customerId", currentUser);
+        if (mDiscount.getText().toString().equals("TEN")) {
+            Total = String.valueOf(Integer.parseInt(Total) - 10);
+            ordersMap.put("totalAmount", Total);
+            ordersMap.put("name", mOrderName.getText().toString());
+            ordersMap.put("address", mOrderAddress.getText().toString());
+            ordersMap.put("email", mOrderEmail.getText().toString());
+            ordersMap.put("date", saveDate);
+            ordersMap.put("orderId", id);
+            ordersMap.put("customerId", currentUser);
+        } else {
+            ordersMap.put("totalAmount", Total);
+            ordersMap.put("name", mOrderName.getText().toString());
+            ordersMap.put("address", mOrderAddress.getText().toString());
+            ordersMap.put("email", mOrderEmail.getText().toString());
+            ordersMap.put("date", saveDate);
+            ordersMap.put("orderId", id);
+            ordersMap.put("customerId", currentUser);
+        }
 
-        Orders.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    FirebaseDatabase.getInstance().getReference().child("Cart").child("Customer View").child(currentUser).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+            Orders.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        FirebaseDatabase.getInstance().getReference().child("Cart").child("Customer View").child(currentUser).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
 
-                            if(task.isSuccessful()){
-                                Toast.makeText(Customer_Order_Activity.this, "Order Placed", Toast.LENGTH_SHORT).show();
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Customer_Order_Activity.this, "Order Placed", Toast.LENGTH_SHORT).show();
 
-                                Intent i = new Intent(Customer_Order_Activity.this, CustomerMainActivity.class);
-                                startActivity(i);
-                                finish();
+                                    Intent i = new Intent(Customer_Order_Activity.this, CustomerMainActivity.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+
                             }
-
-                        }
-                    });
+                        });
+                    }
                 }
-            }
-        });
+            });
+
     }
 }

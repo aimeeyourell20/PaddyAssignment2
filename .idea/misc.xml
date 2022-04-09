@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/boards_orange.xml" value="0.6072916666666667" />
+        <entry key="app/src/main/res/drawable-v24/goals_button_2.xml" value="0.6072916666666667" />
+        <entry key="app/src/main/res/drawable-v24/home.xml" value="0.6072916666666667" />
         <entry key="app/src/main/res/drawable/backgroundprofilegrey.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/drawable/boarders.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.23333333333333334" />
@@ -27,6 +30,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.5770833333333333" />
+        <entry key="app/src/main/res/layout/activity_rate_product.xml" value="0.5911458333333334" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_registration_admin.xml" value="0.22604166666666667" />
         <entry key="app/src/main/res/layout/activity_registration_options.xml" value="0.22604166666666667" />

@@ -16,6 +16,9 @@
         android:theme="@style/Theme.PaddyAssignmentTwo"
         tools:replace="android:theme">
         <activity
+            android:name=".Product_Review_Activity"
+            android:exported="true" />
+        <activity
             android:name=".Rate_Product_Activity"
             android:exported="true" />
         <activity
@@ -23,6 +26,9 @@
             android:exported="true" />
         <activity
             android:name=".Order_Details"
+            android:exported="true" />
+        <activity
+            android:name=".Order_Details_Customer"
             android:exported="true" />
         <activity
             android:name=".Customer_Orders_Admin"

@@ -64,8 +64,7 @@ public class Orders_Adapter_Customer extends RecyclerView.Adapter<Orders_Adapter
 
                 CharSequence charSequence[] = new CharSequence[]{
 
-                        "Product Details",
-                        "Rate Product"
+                        "Product Details"
 
                 };
 
@@ -79,7 +78,7 @@ public class Orders_Adapter_Customer extends RecyclerView.Adapter<Orders_Adapter
                         if(i == 0){
                             Orders_Model orders = orders_models.get(position);
                             Orders_Model customer = orders_models.get(position);
-                            Intent intent = new Intent(context, Order_Details.class);
+                            Intent intent = new Intent(context, Order_Details_Customer.class);
                             intent.putExtra("orderID", orders.getOrderId());
                             intent.putExtra("customerId", customer.getCustomerId());
                             context.startActivity(intent);
