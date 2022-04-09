@@ -36,7 +36,7 @@ import java.util.HashMap;
 
 public class Customer_Settings extends AppCompatActivity {
 
-    private EditText mAddress, mEmail;
+    private EditText mAddress, mEmail, mCardNumber, mCardDate;
     private Spinner mPayment;
     private TextView mName, mType;
     private Button mUpdateCustomer;
@@ -65,6 +65,8 @@ public class Customer_Settings extends AppCompatActivity {
         mPayment = findViewById(R.id.paymentSpinner);
         mUpdateCustomer = findViewById(R.id.updateCustomer);
         mProfile = findViewById(R.id.profileImageProfile);
+        mCardNumber = findViewById(R.id.cardNumber);
+        mCardDate = findViewById(R.id.cardExpiryDate);
 
         mProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,30 +118,40 @@ public class Customer_Settings extends AppCompatActivity {
         String email = mEmail.getText().toString();
         String payment = mPayment.getSelectedItem().toString();
         String type = mType.getText().toString();
+        String card = mCardNumber.getText().toString();
+        String date = mCardDate.getText().toString();
 
         if(TextUtils.isEmpty(name)){
-            mName.setError("Name can not be left blank");
+            mName.setError("Can not be left blank");
         }
         if(TextUtils.isEmpty(email)){
-            mEmail.setError("Bio can not be left blank");
+            mEmail.setError("Can not be left blank");
         }
         if(TextUtils.isEmpty(address)){
-            mAddress.setError("Job title can not be left blank");
+            mAddress.setError("Can not be left blank");
+        }
+        if(TextUtils.isEmpty(card)){
+            mCardNumber.setError("Can not be left blank");
+        }
+        if(TextUtils.isEmpty(date)){
+            mCardDate.setError("Can not be left blank");
         }
         else{
-            UpdateMentee(name,type, email, address, payment);
+            UpdateMentee(name,type, email, address, payment, card, date);
         }
 
 
     }
 
-    private void UpdateMentee(String name, String type, String email, String address, String payment) {
+    private void UpdateMentee(String name, String type, String email, String address, String payment, String card, String date) {
         HashMap<String, Object> MentorMap = new HashMap<>();
         MentorMap.put("name", name);
         MentorMap.put("type", type);
         MentorMap.put("address", address);
         MentorMap.put("email", email);
         MentorMap.put("payment", payment);
+        MentorMap.put("card", card);
+        MentorMap.put("cardExpiryDate", date);
 
         RootRef.updateChildren(MentorMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

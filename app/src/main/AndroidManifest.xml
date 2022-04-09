@@ -16,6 +16,9 @@
         android:theme="@style/Theme.PaddyAssignmentTwo"
         tools:replace="android:theme">
         <activity
+            android:name=".View_Customers_Activity"
+            android:exported="true" />
+        <activity
             android:name=".Admin_Edit_Item"
             android:exported="true" />
         <activity

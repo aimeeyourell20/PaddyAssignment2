@@ -24,7 +24,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class AdminMainActivity extends AppCompatActivity {
 
-    private ImageView mSettings, mProfile, mLogout, mItems, mSearch, mOrders;
+    private ImageView mSettings, mProfile, mLogout, mItems, mSearch, mOrders, mCustomers;
     private TextView mProfileName, mType;
     private DatabaseReference RootRef, AdminRef;
     private FirebaseAuth firebaseAuth;
@@ -46,6 +46,7 @@ public class AdminMainActivity extends AppCompatActivity {
         mLogout = findViewById(R.id.logout);
         mSearch = findViewById(R.id.search);
         mOrders = findViewById(R.id.orders);
+        mCustomers = findViewById(R.id.customers);
 
 
 
@@ -111,6 +112,13 @@ public class AdminMainActivity extends AppCompatActivity {
             }
         });
 
+        mCustomers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Customers();
+            }
+        });
+
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +128,7 @@ public class AdminMainActivity extends AppCompatActivity {
 
 
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -223,6 +232,11 @@ public class AdminMainActivity extends AppCompatActivity {
         Intent i = new Intent(AdminMainActivity.this, Login.class);
         startActivity(i);
         finish();
+    }
+
+    private void Customers() {
+        Intent i = new Intent(AdminMainActivity.this, View_Customers_Activity.class);
+        startActivity(i);
     }
 
 }

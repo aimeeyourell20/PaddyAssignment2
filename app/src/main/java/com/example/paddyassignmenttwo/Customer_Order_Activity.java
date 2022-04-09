@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,8 +28,8 @@ import java.util.HashMap;
 
 public class Customer_Order_Activity extends AppCompatActivity {
 
-    private TextView mOrderAddress, mOrderName, mOrderEmail;
-    private EditText mDiscount;
+    private TextView mOrderAddress, mOrderName, mOrderEmail, mCard, mCardDate;
+    private EditText mDiscount, mDigits;
     private Button mConfirmOrder;
     private DatabaseReference RootRef, Orders;
     private FirebaseAuth firebaseAuth;
@@ -50,6 +51,9 @@ public class Customer_Order_Activity extends AppCompatActivity {
         mOrderEmail = findViewById(R.id.customersEmail);
         mConfirmOrder = findViewById(R.id.confirmOrder);
         mDiscount = findViewById(R.id.discount);
+        mCard = findViewById(R.id.card);
+        mCardDate = findViewById(R.id.cardDate);
+        mDigits = findViewById(R.id.digits);
 
         Total = getIntent().getStringExtra("Total");
 
@@ -60,11 +64,15 @@ public class Customer_Order_Activity extends AppCompatActivity {
                     String name = snapshot.child("name").getValue().toString();
                     String email = snapshot.child("email").getValue().toString();
                     String address = snapshot.child("address").getValue().toString();
+                    String card = snapshot.child("card").getValue().toString();
+                    String date = snapshot.child("cardExpiryDate").getValue().toString();
 
 
                     mOrderName.setText(name);
                     mOrderAddress.setText(address);
                     mOrderEmail.setText(email);
+                    mCard.setText(card);
+                    mCardDate.setText(date);
                 }
             }
 
@@ -79,12 +87,24 @@ public class Customer_Order_Activity extends AppCompatActivity {
         mConfirmOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ConfirmOrder();
+                Validations();
             }
         });
 
 
     }
+
+    private void Validations() {
+        String digits = mDigits.getText().toString();
+        if(TextUtils.isEmpty(digits)){
+            mDigits.setError("You must enter card security number");
+        }
+        else{
+            ConfirmOrder();
+        }
+
+    }
+
 
     private void ConfirmOrder() {
         HashMap<String, Object> ordersMap = new HashMap<>();
@@ -93,6 +113,7 @@ public class Customer_Order_Activity extends AppCompatActivity {
         saveDate = date.format(calendar.getTime());
         Orders = FirebaseDatabase.getInstance().getReference().child("Orders").child(currentUser).push();
         String id = Orders.getKey();
+
 
         if (mDiscount.getText().toString().equals("TEN")) {
             Total = String.valueOf(Integer.parseInt(Total) - 10);
@@ -111,6 +132,7 @@ public class Customer_Order_Activity extends AppCompatActivity {
             ordersMap.put("date", saveDate);
             ordersMap.put("orderId", id);
             ordersMap.put("customerId", currentUser);
+
         }
 
             Orders.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
