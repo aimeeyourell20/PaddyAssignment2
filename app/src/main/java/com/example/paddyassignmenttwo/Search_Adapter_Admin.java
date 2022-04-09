@@ -83,7 +83,7 @@ public void onBindViewHolder(@NonNull Search_Adapter_Admin.ItemsViewHolder holde
 
                     if (i == 0) {
                         Items_Model items = items_models.get(position);
-                        Intent intent = new Intent(context, Items.class);
+                        Intent intent = new Intent(context, Admin_Edit_Item.class);
                         intent.putExtra("itemID", items.getItemID());
                         context.startActivity(intent);
                     }

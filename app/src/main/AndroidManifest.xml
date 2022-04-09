@@ -16,6 +16,9 @@
         android:theme="@style/Theme.PaddyAssignmentTwo"
         tools:replace="android:theme">
         <activity
+            android:name=".Admin_Edit_Item"
+            android:exported="true" />
+        <activity
             android:name=".Product_Review_Activity"
             android:exported="true" />
         <activity

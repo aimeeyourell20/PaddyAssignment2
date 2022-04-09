@@ -64,74 +64,92 @@ public class ItemDetails extends AppCompatActivity {
         mAddItemToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    addToCart();
+                addToCart();
             }
         });
     }
 
     private void addToCart() {
 
-        DatabaseReference Cart = FirebaseDatabase.getInstance().getReference().child("Cart");
-        DatabaseReference Items = FirebaseDatabase.getInstance().getReference().child("Items");
-
-        HashMap<String, Object> cartMap = new HashMap<>();
-        cartMap.put("itemID", ItemID);
-        cartMap.put("title", mTitle.getText().toString());
-        cartMap.put("price", mPrice.getText().toString());
-        cartMap.put("category", mCategory.getText().toString());
-        cartMap.put("quantity", mQuantity.getNumber());
-        cartMap.put("discount", "");
-        cartMap.put("customerId", Customer);
-
-        //if(mQuantity.getNumber() > Items.items_models.ge)
-
-        Cart.child("Customer View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        ItemRef.child(ItemID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Cart.child("Admin View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int quantity =snapshot.child("quantity").getValue(Integer.class);
+                if(quantity <= 0){
+                    Toast.makeText(ItemDetails.this, "Item not available", Toast.LENGTH_SHORT).show();
+                }else{
+
+                    DatabaseReference Cart = FirebaseDatabase.getInstance().getReference().child("Cart");
+                    DatabaseReference Items = FirebaseDatabase.getInstance().getReference().child("Items");
+
+                    HashMap<String, Object> cartMap = new HashMap<>();
+                    cartMap.put("itemID", ItemID);
+                    cartMap.put("title", mTitle.getText().toString());
+                    cartMap.put("price", mPrice.getText().toString());
+                    cartMap.put("category", mCategory.getText().toString());
+                    cartMap.put("quantity", mQuantity.getNumber());
+                    cartMap.put("discount", "");
+                    cartMap.put("customerId", Customer);
+
+                    //if(mQuantity.getNumber() > Items.items_models.ge)
+
+                    Cart.child("Customer View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-
                             if(task.isSuccessful()){
-                                Toast.makeText(ItemDetails.this, "Item added to cart", Toast.LENGTH_SHORT).show();
-
-                                Items.addListenerForSingleValueEvent(new ValueEventListener() {
+                                Cart.child("Admin View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    public void onComplete(@NonNull Task<Void> task) {
 
-                                                for(DataSnapshot a :snapshot.getChildren()){
-                                                    int quantity = a.child("quantity").getValue(Integer.class);
+                                        if(task.isSuccessful()){
+                                            Toast.makeText(ItemDetails.this, "Item added to cart", Toast.LENGTH_SHORT).show();
 
-                                                    int total = quantity;
-                                                    int item = Integer.parseInt(mQuantity.getNumber());
-                                                    int quantityTotal = total - item;
+                                            Items.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                                    HashMap<String, Object> map = new HashMap<>();
-                                                    map.put("quantity", quantityTotal);
-                                                    Items.child(ItemID).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            Intent i = new Intent(ItemDetails.this, CustomerMainActivity.class);
-                                                            startActivity(i);
-                                                        }
-                                                    });
+                                                    for(DataSnapshot a :snapshot.getChildren()){
+                                                        int quantity = a.child("quantity").getValue(Integer.class);
+
+                                                        int total = quantity;
+                                                        int item = Integer.parseInt(mQuantity.getNumber());
+                                                        int quantityTotal = total - item;
+
+                                                        HashMap<String, Object> map = new HashMap<>();
+                                                        map.put("quantity", quantityTotal);
+                                                        Items.child(ItemID).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                Intent i = new Intent(ItemDetails.this, CustomerMainActivity.class);
+                                                                startActivity(i);
+                                                            }
+                                                        });
+                                                    }
                                                 }
-                                    }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            });
+                                        }
 
                                     }
                                 });
                             }
-
                         }
                     });
+
+
+
                 }
             }
-        });
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
     }
