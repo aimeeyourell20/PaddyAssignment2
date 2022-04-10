@@ -111,6 +111,18 @@ public class Search_Admin extends AppCompatActivity {
 
     }
 
+    public void CategoryDescending() {
+
+        Collections.sort(items_models, new Comparator<Items_Model>() {
+            @Override
+            public int compare(Items_Model o1, Items_Model o2) {
+                return o2.getCategory().compareToIgnoreCase(o1.getCategory());
+            }
+        });
+        items_adapter.notifyDataSetChanged();
+
+    }
+
     public void ManufactoringAscending() {
 
         Collections.sort(items_models, new Comparator<Items_Model>() {
@@ -135,17 +147,7 @@ public class Search_Admin extends AppCompatActivity {
 
     }
 
-    public void CategoryDescending() {
 
-        Collections.sort(items_models, new Comparator<Items_Model>() {
-            @Override
-            public int compare(Items_Model o1, Items_Model o2) {
-                return o2.getCategory().compareToIgnoreCase(o1.getCategory());
-            }
-        });
-        items_adapter.notifyDataSetChanged();
-
-    }
 
     public void ManufactoringDescending() {
 

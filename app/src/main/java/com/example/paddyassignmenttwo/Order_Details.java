@@ -42,7 +42,7 @@ public class Order_Details extends AppCompatActivity {
 
     }
         private void FetchOrders() {
-            RootRef.child("Cart").child("Admin View").child(customerId).child("Items").addValueEventListener(new ValueEventListener() {
+            RootRef.child("Cart").child("Admin").child(customerId).child("Items").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 

@@ -14,7 +14,7 @@
         <entry key="app/src/main/res/drawable/ic_money.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/drawable/ic_shopping.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/drawable/profilebackgroundwhite.xml" value="0.23333333333333334" />
-        <entry key="app/src/main/res/layout/activity_admin_edit_item.xml" value="0.5770833333333333" />
+        <entry key="app/src/main/res/layout/activity_admin_edit_item.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_admin_main.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_admin_profile.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_admin_settings.xml" value="0.24010416666666667" />

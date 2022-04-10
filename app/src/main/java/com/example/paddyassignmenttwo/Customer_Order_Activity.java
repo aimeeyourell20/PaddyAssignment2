@@ -139,7 +139,7 @@ public class Customer_Order_Activity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        FirebaseDatabase.getInstance().getReference().child("Cart").child("Customer View").child(currentUser).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        FirebaseDatabase.getInstance().getReference().child("Cart").child("Customer").child(currentUser).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 

@@ -93,11 +93,11 @@ public class ItemDetails extends AppCompatActivity {
 
                     //if(mQuantity.getNumber() > Items.items_models.ge)
 
-                    Cart.child("Customer View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    Cart.child("Customer").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Cart.child("Admin View").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                Cart.child("Admin").child(Customer).child("Items").child(ItemID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
 

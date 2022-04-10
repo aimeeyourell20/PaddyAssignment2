@@ -7,6 +7,18 @@
     tools:context=".Admin_Edit_Item"
     android:orientation="vertical">
 
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
@@ -31,7 +43,25 @@
 
     </LinearLayout>
 
-    <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/itemImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/item"
+                    android:layout_gravity="center"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
@@ -206,6 +236,12 @@
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textSize="22sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>
 
 

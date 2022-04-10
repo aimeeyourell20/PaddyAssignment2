@@ -53,7 +53,7 @@ public class Items extends AppCompatActivity {
 
         Category = getIntent().getExtras().get("category").toString();
         Toast.makeText(Items.this, Category, Toast.LENGTH_SHORT).show();
-        StorageReference = FirebaseStorage.getInstance().getReference().child("Profile Images");
+
 
         mTitle = findViewById(R.id.itemTitle);
         mManufacturer = findViewById(R.id.itemManufacturer);

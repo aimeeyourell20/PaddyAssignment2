@@ -55,6 +55,7 @@ public class Admin_Edit_Item extends AppCompatActivity {
         StorageReference = FirebaseStorage.getInstance().getReference().child("Profile Images");
 
 
+
         Intent intent = getIntent();
         if (intent != null) {
             Bundle extras = intent.getExtras();
@@ -74,6 +75,17 @@ public class Admin_Edit_Item extends AppCompatActivity {
         mImage = findViewById(R.id.itemImage);
         mAddItem = findViewById(R.id.addItemButton);
         mQuantity = findViewById(R.id.itemQuantity);
+
+        mImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent profileIntent = new Intent();
+                profileIntent.setType("image/*");
+                profileIntent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(profileIntent, PICK_IMAGE);
+            }
+        });
+
 
 
         ItemRef.addValueEventListener(new ValueEventListener() {
@@ -155,7 +167,76 @@ public class Admin_Edit_Item extends AppCompatActivity {
         finish();
     }
 
+    //Set and save image to database
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
+
+            Uri image = data.getData();
+
+            CropImage.activity(image).setGuidelines(CropImageView.Guidelines.ON).setAspectRatio(1, 1).start(this);
+
+        }
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+
+            if (resultCode == RESULT_OK) {
+
+                Uri resultUri = result.getUri();
+
+                StorageReference r = StorageReference.child(itemId + ".jpg");
+
+                r.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        r.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String url = uri.toString();
+
+                                ItemRef.child("profileimage").setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                        if (task.isSuccessful()) {
+
+                                            Intent i = new Intent(Admin_Edit_Item.this, Admin_Edit_Item.class);
+                                            startActivity(i);
+
+                                            Toast.makeText(Admin_Edit_Item.this, "Profile image stored to firebase database successfully", Toast.LENGTH_SHORT).show();
+
+                                        } else {
+
+
+                                            Toast.makeText(Admin_Edit_Item.this, "Error", Toast.LENGTH_SHORT).show();
+
+                                        }
+
+                                    }
+                                });
+                            }
+                        });
+                    }
+
+
+                });
+            } else {
+
+                Toast.makeText(Admin_Edit_Item.this, "Error image can not be cropped", Toast.LENGTH_SHORT).show();
+
+
+            }
+
+        }
+    }
 }
+
+
+
 
 
 

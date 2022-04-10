@@ -71,7 +71,7 @@ public class Cart extends AppCompatActivity {
 
         DatabaseReference Cart = FirebaseDatabase.getInstance().getReference().child("Cart");
 
-        FirebaseRecyclerOptions<Cart_Model> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Cart_Model>().setQuery(Cart.child("Customer View").child(Customer).child("Items"), Cart_Model.class).build();
+        FirebaseRecyclerOptions<Cart_Model> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Cart_Model>().setQuery(Cart.child("Customer").child(Customer).child("Items"), Cart_Model.class).build();
 
         FirebaseRecyclerAdapter<Cart_Model, CartViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Cart_Model, CartViewHolder>(firebaseRecyclerOptions) {
             @Override
@@ -109,7 +109,7 @@ public class Cart extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                                 if(i == 1){
-                                    Cart.child("Customer View").child(Customer).child("Items").child(cart_model.getItemID()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    Cart.child("Customer").child(Customer).child("Items").child(cart_model.getItemID()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
 
