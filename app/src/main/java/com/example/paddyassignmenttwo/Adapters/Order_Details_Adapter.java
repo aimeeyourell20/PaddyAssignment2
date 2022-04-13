@@ -1,15 +1,17 @@
-package com.example.paddyassignmenttwo;
+package com.example.paddyassignmenttwo.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.paddyassignmenttwo.Models.Cart_Model;
+import com.example.paddyassignmenttwo.Models.Items_Model;
+import com.example.paddyassignmenttwo.R;
 
 import java.util.ArrayList;
 import java.util.List;

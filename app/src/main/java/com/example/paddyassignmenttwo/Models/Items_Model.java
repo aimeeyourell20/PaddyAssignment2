@@ -1,4 +1,4 @@
-package com.example.paddyassignmenttwo;
+package com.example.paddyassignmenttwo.Models;
 
 public class Items_Model {
 

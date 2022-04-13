@@ -29,6 +29,7 @@
                 android:id="@+id/imageview"
                 android:layout_width="196dp"
                 android:layout_height="233dp"
+                android:src="@drawable/undraw_web_shopping_re_owap"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp">
 

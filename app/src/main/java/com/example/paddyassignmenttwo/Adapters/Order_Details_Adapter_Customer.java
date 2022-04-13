@@ -1,4 +1,4 @@
-package com.example.paddyassignmenttwo;
+package com.example.paddyassignmenttwo.Adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.paddyassignmenttwo.Models.Cart_Model;
+import com.example.paddyassignmenttwo.Models.Items_Model;
+import com.example.paddyassignmenttwo.Product_Review_Activity;
+import com.example.paddyassignmenttwo.R;
+import com.example.paddyassignmenttwo.Rate_Product_Activity;
 
 import java.util.ArrayList;
 import java.util.List;

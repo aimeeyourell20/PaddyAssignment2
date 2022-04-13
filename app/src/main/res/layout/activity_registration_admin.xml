@@ -34,6 +34,7 @@
                     android:id="@+id/imageview"
                     android:layout_width="152dp"
                     android:layout_height="68dp"
+                    android:src="@drawable/undraw_join_of2w"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp">
 

@@ -1,4 +1,4 @@
-package com.example.paddyassignmenttwo;
+package com.example.paddyassignmenttwo.Adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +15,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.paddyassignmenttwo.AdminMainActivity;
+import com.example.paddyassignmenttwo.Admin_Edit_Item;
+import com.example.paddyassignmenttwo.Item_Details_Admin;
+import com.example.paddyassignmenttwo.Models.Items_Model;
+import com.example.paddyassignmenttwo.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;

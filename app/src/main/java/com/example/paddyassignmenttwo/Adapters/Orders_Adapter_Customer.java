@@ -1,4 +1,4 @@
-package com.example.paddyassignmenttwo;
+package com.example.paddyassignmenttwo.Adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -6,17 +6,17 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.paddyassignmenttwo.Models.Items_Model;
+import com.example.paddyassignmenttwo.Order_Details_Customer;
+import com.example.paddyassignmenttwo.Models.Orders_Model;
+import com.example.paddyassignmenttwo.R;
+import com.example.paddyassignmenttwo.Rate_Product_Activity;
 
 import java.util.ArrayList;
 import java.util.List;

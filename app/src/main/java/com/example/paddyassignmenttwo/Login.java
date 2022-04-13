@@ -54,14 +54,14 @@ public class Login extends AppCompatActivity {
         });
 
         //User can reset password
-       /* mForgotPassword.setOnClickListener(new View.OnClickListener()
+        mForgotPassword.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 startActivity(new Intent(Login.this, ResetPassword.class));
             }
-        });*/
+        });
 
         mLoginButton.setOnClickListener(new View.OnClickListener()
         {
@@ -97,39 +97,8 @@ public class Login extends AppCompatActivity {
                         {
                             if (task.isSuccessful()) {
 
-                                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                                String RegisteredUserID = currentUser.getUid();
-                                DatabaseReference dr = FirebaseDatabase.getInstance().getReference().child("users").child(RegisteredUserID);
-
-                                //Checks to see if user is a mentor or mentee
-                                dr.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        String type = snapshot.child("type").getValue().toString();
-
-                                        if (type.equals("customer")) {
-
-                                            Toast.makeText(Login.this, "Customer log in successful", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(Login.this, CustomerMainActivity.class);
-                                            startActivity(i);
-                                            finish();
-
-                                        } else if (type.equals("admin")) {
-
-                                            Toast.makeText(Login.this, "Admin log in successful", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(Login.this, AdminMainActivity.class);
-                                            startActivity(i);
-                                            finish();
-                                        }
-
-                                    }
-
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
+                                //Checks to ensure email is verified
+                                VerifyEmailAddress();
                             }
                             else
                             {
@@ -142,6 +111,56 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    private void VerifyEmailAddress()
+    {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        emailAddressCheckers = user.isEmailVerified();
+
+        //If email is verified continue
+        if(emailAddressCheckers)
+        {
+
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            String RegisteredUserID = currentUser.getUid();
+            DatabaseReference dr = FirebaseDatabase.getInstance().getReference().child("users").child(RegisteredUserID);
+
+            //Checks to see if user is a mentor or mentee
+            dr.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String type = snapshot.child("type").getValue().toString();
+
+                    if (type.equals("customer")) {
+
+                        Toast.makeText(Login.this, "Customer log in successful", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Login.this, CustomerMainActivity.class);
+                        startActivity(i);
+                        finish();
+
+                    } else if (type.equals("admin")) {
+
+                        Toast.makeText(Login.this, "Admin log in successful", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Login.this, AdminMainActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }
+        else
+        {
+            Toast.makeText(this, "Please verify your Account first... ", Toast.LENGTH_SHORT).show();
+            firebaseAuth.signOut();
+        }
+    }
 
 
     private void SendUserToRegisterActivity()
@@ -149,4 +168,6 @@ public class Login extends AppCompatActivity {
         Intent registerIntent = new Intent(Login.this, RegistrationOptions.class);
         startActivity(registerIntent);
     }
+
+
 }

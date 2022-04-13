@@ -81,7 +81,7 @@ public class Registration_Customer extends AppCompatActivity {
                 } else {
                     String currentUser = firebaseAuth.getCurrentUser().getUid();
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    //user.sendEmailVerification();
+                    user.sendEmailVerification();
                     RootRef = FirebaseDatabase.getInstance().getReference().child("users").child(currentUser);
                     HashMap mentee = new HashMap();
                     mentee.put("name", name);
