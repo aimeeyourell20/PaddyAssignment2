@@ -62,7 +62,6 @@ public class Admin_Edit_Item extends AppCompatActivity {
 
             if (extras != null) {
                 itemId = (String) extras.get("itemID");
-                //messageReceiverName = (String) extras.get("name");
             }
         }
 
